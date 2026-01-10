@@ -1,0 +1,23 @@
+services:
+  weather-checker:
+    build: .
+    container_name: weather-checker
+    restart: unless-stopped
+    environment:
+      # Data directories (Docker paths)
+      - DATADIR=/data/xml
+      - DELETED_DIR=/data/deleted
+      - DB_PATH=/data/db/weather.sqlite3
+      # Notification settings (from .env)
+      - GMAIL_APP_PASS=${GMAIL_APP_PASS}
+      - GMAIL_FROM=${GMAIL_FROM}
+      - EMAIL_TO=${EMAIL_TO}
+      - EMAIL_BCC=${EMAIL_BCC}
+    volumes:
+      - ./data:/data
+      - ./logs:/logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

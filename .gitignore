@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+venv310/
+ENV/
+env/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data directories (persistent volumes)
+data/
+logs/
+
+# Old structure
+app/del/
+app/data/
+app/image/
+
+# memo
+memo*.txt
+
+# OS
+.DS_Store
+Thumbs.db
