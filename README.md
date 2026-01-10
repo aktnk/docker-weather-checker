@@ -179,8 +179,5 @@ docker-compose exec weather-checker python models.py
 
 ## ライセンス
 
-（ライセンスを記載）
+[MITライセンス](LICENSE)
 
-## 作者
-
-（作者情報を記載）
