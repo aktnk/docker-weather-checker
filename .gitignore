@@ -24,8 +24,17 @@ env/
 *.swo
 
 # Data directories (persistent volumes)
-data/
-logs/
+# Ignore all files in data/ and logs/, but keep .gitkeep for directory structure
+data/*
+!data/.gitkeep
+data/db/*
+!data/db/.gitkeep
+data/xml/*
+!data/xml/.gitkeep
+data/deleted/*
+!data/deleted/.gitkeep
+logs/*
+!logs/.gitkeep
 
 # Old structure
 app/del/
