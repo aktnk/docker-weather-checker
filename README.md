@@ -2,13 +2,22 @@
 
 気象庁の警報・注意報を監視し、変更があった場合にGmailで通知するシステムです。
 
+## 実装バージョン
+
+| バージョン | ディレクトリ | 状態 | 説明 |
+|-----------|-------------|------|------|
+| Python + Docker | `/app` | 本番稼働中 | オリジナル実装 |
+| Rust + Tauri | `/tauri-weather-checker` | 本番対応完了 | ネイティブアプリ実装 |
+
+Rust版の詳細は [tauri-weather-checker/README.md](tauri-weather-checker/README.md) を参照してください。
+
 ## 特徴
 
-- 🔄 **自動スケジュール実行**: 10分間隔で警報・注意報をチェック
-- 📧 **重複通知防止**: 状態変更時のみ通知（発表/継続/解除）
-- 🐳 **Docker対応**: コンテナ化により簡単デプロイ
-- 🔁 **自動再起動**: コンテナ停止時も自動復旧
-- 💾 **データ永続化**: SQLiteで警報履歴を管理
+- 自動スケジュール実行: 10分間隔で警報・注意報をチェック
+- 重複通知防止: 状態変更時のみ通知（発表/継続/解除）
+- Docker対応: コンテナ化により簡単デプロイ
+- 自動再起動: コンテナ停止時も自動復旧
+- データ永続化: SQLiteで警報履歴を管理
 
 ## クイックスタート
 
@@ -176,6 +185,33 @@ docker-compose exec weather-checker python models.py
 - **requests**: HTTP通信
 - **Docker**: コンテナ化
 - **SQLite**: データベース
+
+## Rust版 (Tauri)
+
+Docker不要のネイティブアプリケーション版も利用可能です。
+
+### クイックスタート (Rust版)
+
+```bash
+cd tauri-weather-checker
+
+# 環境設定
+cp .env.example .env
+# .envを編集してGmail認証情報を設定
+
+# config.yamlで監視地域を設定
+# CONFIG_PATH=../config.yaml を.envに追加
+
+# ビルド・実行
+cd src-tauri
+cargo build --release
+./target/release/tauri-weather-checker
+
+# 開発モード（テスト用メール接頭辞付き）
+RUST_LOG=tauri_weather_checker=debug cargo run
+```
+
+詳細は [tauri-weather-checker/README.md](tauri-weather-checker/README.md) を参照。
 
 ## ライセンス
 
