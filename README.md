@@ -2,13 +2,20 @@
 
 気象庁の警報・注意報を監視し、変更があった場合にGmailで通知するシステムです。
 
+## 実装バージョン
+
+| バージョン | リポジトリ | 状態 | 説明 |
+|-----------|-----------|------|------|
+| Python + Docker | このリポジトリ (`/app`) | 本番稼働中 | オリジナル実装 |
+| Rust + Tauri | [weather-warning-checker](https://github.com/aktnk/weather-warning-checker) | 本番対応完了 | ネイティブアプリ実装 |
+
 ## 特徴
 
-- 🔄 **自動スケジュール実行**: 10分間隔で警報・注意報をチェック
-- 📧 **重複通知防止**: 状態変更時のみ通知（発表/継続/解除）
-- 🐳 **Docker対応**: コンテナ化により簡単デプロイ
-- 🔁 **自動再起動**: コンテナ停止時も自動復旧
-- 💾 **データ永続化**: SQLiteで警報履歴を管理
+- 自動スケジュール実行: 10分間隔で警報・注意報をチェック
+- 重複通知防止: 状態変更時のみ通知（発表/継続/解除）
+- Docker対応: コンテナ化により簡単デプロイ
+- 自動再起動: コンテナ停止時も自動復旧
+- データ永続化: SQLiteで警報履歴を管理
 
 ## クイックスタート
 
@@ -176,6 +183,12 @@ docker-compose exec weather-checker python models.py
 - **requests**: HTTP通信
 - **Docker**: コンテナ化
 - **SQLite**: データベース
+
+## Rust版 (Tauri)
+
+Docker不要のネイティブアプリケーション版は別リポジトリに移行しました。
+
+詳細は [weather-warning-checker](https://github.com/aktnk/weather-warning-checker) を参照してください。
 
 ## ライセンス
 
