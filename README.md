@@ -4,12 +4,10 @@
 
 ## 実装バージョン
 
-| バージョン | ディレクトリ | 状態 | 説明 |
-|-----------|-------------|------|------|
-| Python + Docker | `/app` | 本番稼働中 | オリジナル実装 |
-| Rust + Tauri | `/tauri-weather-checker` | 本番対応完了 | ネイティブアプリ実装 |
-
-Rust版の詳細は [tauri-weather-checker/README.md](tauri-weather-checker/README.md) を参照してください。
+| バージョン | リポジトリ | 状態 | 説明 |
+|-----------|-----------|------|------|
+| Python + Docker | このリポジトリ (`/app`) | 本番稼働中 | オリジナル実装 |
+| Rust + Tauri | [weather-warning-checker](https://github.com/aktnk/weather-warning-checker) | 本番対応完了 | ネイティブアプリ実装 |
 
 ## 特徴
 
@@ -188,30 +186,9 @@ docker-compose exec weather-checker python models.py
 
 ## Rust版 (Tauri)
 
-Docker不要のネイティブアプリケーション版も利用可能です。
+Docker不要のネイティブアプリケーション版は別リポジトリに移行しました。
 
-### クイックスタート (Rust版)
-
-```bash
-cd tauri-weather-checker
-
-# 環境設定
-cp .env.example .env
-# .envを編集してGmail認証情報を設定
-
-# config.yamlで監視地域を設定
-# CONFIG_PATH=../config.yaml を.envに追加
-
-# ビルド・実行
-cd src-tauri
-cargo build --release
-./target/release/tauri-weather-checker
-
-# 開発モード（テスト用メール接頭辞付き）
-RUST_LOG=tauri_weather_checker=debug cargo run
-```
-
-詳細は [tauri-weather-checker/README.md](tauri-weather-checker/README.md) を参照。
+詳細は [weather-warning-checker](https://github.com/aktnk/weather-warning-checker) を参照してください。
 
 ## ライセンス
 
